@@ -1,0 +1,62 @@
+//字體大小
+@each $point, $pixel in $grid-breakpoints{
+    @if not $pixel {
+       @each $level, $value in $font-sizes{
+            .fs-#{$level}{
+                font-size: $value;
+            }
+        }
+    }@else {
+        @include mq($point){
+            @each $level, $value in $font-sizes{
+                .fs-#{$point}-#{$level}{
+                    font-size: $value;
+                }
+            }
+        }
+    }
+}
+
+//字重
+@each $name, $value in $font-weights{
+    .fw-#{$name}{
+        font-weight: $value;
+    }
+}
+
+//行距
+@each $name, $value in $line-heights{
+    .lh-#{$name}{
+        line-height: $value;
+    }
+}
+
+//對齊
+@each $point, $pixel in $grid-breakpoints{
+    @if not $pixel {
+        @each $name in $text-alignments{
+            .text-#{$name}{
+                text-align: $name;
+            }
+        }
+    }@else {
+        @include mq($point) {
+            @each $name in $text-alignments{
+                .text-#{$point}-#{$name}{
+                    text-align: $name;
+                }
+            }
+        }
+    }
+}
+
+//font-style
+.fst-italic{
+    font-style: italic;
+}
+.text-lowercase{
+    text-transform: lowercase;
+}
+.text-uppercase{
+    text-transform: uppercase;
+}

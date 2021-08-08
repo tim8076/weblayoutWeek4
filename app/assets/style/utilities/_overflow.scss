@@ -1,0 +1,5 @@
+@each $value in $overflow-list{
+    .overflow-#{$value}{
+        overflow: $value;
+    }
+}

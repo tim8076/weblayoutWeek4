@@ -1,0 +1,53 @@
+
+//border
+@each $point, $pixel in $grid-breakpoints{
+    @if not $pixel {
+        @each $dir, $value in $directions{
+            @if not $value {
+                .border{
+                    border: 1px solid $border-color;
+                }
+            } @else {
+                .border-#{$dir}{
+                    border-#{$value}: 1px solid $border-color;
+                }
+            }
+        }
+    }@else {
+        @include mq($point){
+            @each $dir, $value in $directions{
+                @if not $value {
+                    .border-#{$point}{
+                        border: 1px solid $border-color;
+                    }
+                } @else {
+                    .border-#{$dir}-#{$point}{
+                        border-#{$value}: 1px solid $border-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+//border-width
+@each $level, $value in $border-widths{
+    .border-#{$level}{
+        border-width: $value;
+    }
+}
+
+//border-radius
+@each $level, $value in $border-radius-list{
+    .rounded-#{$level}{
+        border-radius: $value;
+    }
+}
+
+//border-color
+@each $color, $value in $theme-colors{
+    .border-#{$color}{
+        border-color: $value;
+    }
+}

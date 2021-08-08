@@ -1,0 +1,22 @@
+
+@each $point, $pixel in $grid-breakpoints{
+    @if not $pixel{
+        @each $dir, $value in $sizing-types{
+            @each $num, $percent in $sizing-list{
+                .#{$dir}-#{$num}{
+                    #{$value}: $percent
+                }
+            }
+        }
+    }@else{
+        @include mq($point){
+          @each $dir, $value in $sizing-types{
+                @each $num, $percent in $sizing-list{
+                    .#{$dir}-#{$point}-#{$num}{
+                        #{$value}: $percent
+                    }
+                }
+            }
+        }
+    }
+}

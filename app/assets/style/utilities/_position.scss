@@ -1,0 +1,29 @@
+
+@each $point, $pixel in $grid-breakpoints{
+    @if not $pixel {
+       @each $value in $position-list{
+            .position-#{$value}{
+                position: $value;
+            }
+        }  
+    }@else {
+       @include mq($point){
+            @each $value in $position-list{
+                .position-#{$point}-#{$value}{
+                    position: $value;
+                }
+            }  
+        }
+    }
+}
+
+
+@each $key, $value in $position-values{
+    @each $dir, $dirvalue in $directions{
+        @if $dirvalue {
+            .#{$dir}-#{$key}{
+                #{$dir}: $value;
+            }
+        }
+    }
+}

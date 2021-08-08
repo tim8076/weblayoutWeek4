@@ -1,0 +1,96 @@
+.container {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $gutter-width / 2 ;
+  padding-right: $gutter-width / 2;
+    @include mq(md){
+      max-width: 720px;
+    }
+    @include mq(sm){
+      max-width: 375px;
+    }
+  &--py{
+    padding-top: 60px;
+    padding-bottom: 80px;
+    @include mq(md){
+      padding-top: 40px;
+      padding-bottom: 56px;
+    }
+    @include mq(sm){
+      padding-top: 32px;
+      padding-bottom: 40px;
+    }
+  }
+  &--py--lg{
+    padding-top: 80px;
+    padding-bottom: 160px;
+    @include mq(md){
+      padding-top: 56px;
+      padding-bottom: 96px;
+    }
+    @include mq(sm){
+      padding-top: 32px;
+      padding-bottom: 56px;
+    }
+  }
+  &--py--xlg{
+    padding-top: 96px;
+    padding-bottom: 160px;
+    @include mq(md){
+      padding-top: 60px;
+      padding-bottom: 96px;
+    }
+    @include mq(sm){
+      padding-top: 28px;
+      padding-bottom: 56px;
+    }
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $gutter-width / 2;
+  padding-right: $gutter-width / 2;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -($gutter-width / 2);
+  margin-right: -($gutter-width / 2);
+}
+
+.no-gutters {
+  margin-left: 0px;
+  margin-right: 0px;
+
+  > [class*='col-'] {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@each $key, $value in $grid-breakpoints {
+  @if not $value {
+    @for $var from 1 through $grid-sum {
+      .col-#{$var} {
+        max-width: 100% * ($var / $grid-sum);
+        flex: 0 0 (100% * ($var / $grid-sum));
+        padding-left: $gutter-width / 2;
+        padding-right: $gutter-width / 2;
+      }
+    }
+  } @else {
+    @media screen and (max-width: $value) {
+      @for $var from 1 through $grid-sum  {
+        .col-#{$key}-#{$var} {
+          max-width: 100% * ($var / $grid-sum);
+          flex: 0 0 (100% * ($var / $grid-sum));
+        }
+      }
+    }
+  }
+}

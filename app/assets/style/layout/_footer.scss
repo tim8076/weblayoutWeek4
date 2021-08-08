@@ -1,0 +1,12 @@
+
+.footer{
+    &__logo{
+        @include size(48px);
+        @include mq(md){
+            @include size(24px);
+        }
+    }
+    &__link:hover{
+        color: $color-link-hover;
+    }
+}

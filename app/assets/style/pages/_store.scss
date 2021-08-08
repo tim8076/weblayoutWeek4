@@ -1,0 +1,21 @@
+
+.page-store{
+    .store-select{
+        width: 29.189%;
+        font-size: 18px;
+        padding: 0.5em 1em;
+        @include mq(md){
+            width: 34.347%;
+        }
+        @include mq(sm){
+            flex-grow: 1;
+            font-size: 16px;
+        }
+    }
+    .store-img{
+        height: 224px;
+        @include mq(md){
+            height: 164px;
+        }
+    }
+}

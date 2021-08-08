@@ -1,0 +1,6 @@
+
+@each $shadow, $value in $shadow-list{
+    .shadow-#{$shadow}{
+        box-shadow: $value;
+    }
+}
